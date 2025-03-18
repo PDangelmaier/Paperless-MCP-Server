@@ -26,31 +26,31 @@ The system offers robust document processing capabilities, including OCR (Optica
 
 ## Features
 
-- **Document Storage & Organization**
+**Document Storage & Organization**
 - Secure cloud or on-premises document storage
 - Hierarchical folder structure
 - Custom metadata and tagging
 - Advanced search capabilities
 
-- **Document Processing**
+**Document Processing**
 - OCR for scanned documents
 - Automated document classification
 - Metadata extraction
 - PDF processing and manipulation
 
-- **Security & Compliance**
+**Security & Compliance**
 - Role-based access control
 - Audit logging for all document activities
 - Encryption of sensitive data
 - Compliance with industry standards (GDPR, HIPAA, etc.)
 
-- **Integration & Extensibility**
+**Integration & Extensibility**
 - RESTful API for third-party integration
 - Webhook support for automation
 - Customizable workflow engine
 - Plugin architecture for extending functionality
 
-- **User Experience**
+**User Experience**
 - Intuitive web-based user interface
 - Mobile-responsive design
 - Document preview and annotation
