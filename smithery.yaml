@@ -1,0 +1,88 @@
+# Smithery Configuration for Node.js TypeScript Application
+
+version: "1.0"
+name: "paperless-mcp"
+
+# Environment Variables
+environment:
+  development:
+    NODE_ENV: "development"
+    PORT: 3000
+    LOG_LEVEL: "debug"
+  production:
+    NODE_ENV: "production"
+    PORT: 80
+    LOG_LEVEL: "info"
+  test:
+    NODE_ENV: "test"
+    PORT: 3001
+    LOG_LEVEL: "debug"
+
+# Build Configuration
+build:
+  before_script:
+    - npm ci
+  script:
+    - npm run lint
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+      - node_modules/
+
+# Test Configuration
+test:
+  before_script:
+    - npm ci
+  script:
+    - npm run test
+  coverage:
+    enabled: true
+    format: "lcov"
+    threshold: 80
+
+# Deployment Configuration
+deploy:
+  staging:
+    environment: production
+    script:
+      - npm ci --production
+      - npm run build
+    deploy:
+      - echo "Deploying to staging server..."
+      - scp -r dist/ user@staging-server:/var/www/app
+      - ssh user@staging-server "pm2 restart app"
+    healthcheck:
+      url: "https://staging.example.com/health"
+      timeout: 60
+  
+  production:
+    environment: production
+    script:
+      - npm ci --production
+      - npm run build
+    deploy:
+      - echo "Deploying to production server..."
+      - scp -r dist/ user@production-server:/var/www/app
+      - ssh user@production-server "pm2 restart app"
+    healthcheck:
+      url: "https://example.com/health"
+      timeout: 60
+    
+# Cache Configuration
+cache:
+  key: "$CI_COMMIT_REF_SLUG"
+  paths:
+    - node_modules/
+    - .npm/
+
+# Notifications
+notifications:
+  email:
+    on_success: change
+    on_failure: always
+  slack:
+    webhook: "https://hooks.slack.com/services/YOUR_WEBHOOK_URL"
+    on_success: change
+    on_failure: always
+

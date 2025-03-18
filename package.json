@@ -1,0 +1,44 @@
+{
+"name": "mcp-server-paperless",
+"version": "0.1.0",
+"description": "MCP server for Paperless-ngx",
+"main": "dist/index.js",
+"types": "dist/index.d.ts",
+"scripts": {
+    "build": "tsc",
+    "start": "node ./dist/index.js",
+    "dev": "ts-node index.ts",
+    "watch": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+}
+"repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/paperless-mcp"
+},
+"keywords": [
+    "mcp",
+    "paperless",
+    "paperless-ngx",
+    "document-management"
+],
+"author": "",
+"license": "MIT",
+"dependencies": {
+    "axios": "^1.6.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-basic-auth": "^1.2.1",
+    "mcp-sdk": "^0.9.4",
+    "uuid": "^9.0.0"
+}
+"devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.0",
+    "@types/uuid": "^9.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
+}
+}
+
